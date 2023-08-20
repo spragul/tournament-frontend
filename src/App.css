@@ -32,7 +32,218 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.card-header {
+  text-align: right;
+
+}
+
+.top-container {
+  background-image: linear-gradient(to right, #e944a0f7, #ffff00c4);
+}
+
+/* home */
+.btn {
+  margin: 5px;
+  ;
+}
+
+.delete-button {
+  text-align: center;
+}
+
+.delete-btn {
+  color: white;
+  font-size: 20px;
+}
+
+.edit-btn {
+  color: white;
+  font-size: 20px;
+}
+
+/* dropdown */
+
+
+.drop-containar {
+  gap: 10px;
+}
+
+.dropdown-select {
+  background-color: chartreuse;
+  font-size: 30px;
+  height: 50px;
+  width: 500px;
+}
+
+.dropdown-select option {
+  background-color: blue;
+}
+
+@media screen and (max-width:600px) {
+  .dropdown-select {
+    background-color: chartreuse;
+    font-size: 10px;
+    height: 50px;
+    width: 370px;
+  }
+
+  .dropdown-select option {
+    background-color: blue;
+    width: 370px;
+    height: 50px;
+  }
+}
+
+/* dropdown end*/
+
+/* circle-loading */
+.circle-loading {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(to right, #68cc86f7, #fc5cd4c4);
+}
+
+/* tournament*/
+.my_span {
+  color: darkblue;
+}
+
+
+.order-container h1 {
+  color: white;
+  text-align: center;
+  font-size: 35px;
+}
+
+.my-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.my-card {
+  border: 1px solid green;
+  border-radius: 5px 50px 5px 50px;
+  width: 300px;
+  height: 580px;
+  padding: 5px;
+  margin: 5px;
+  background-color: #ffffff57;
+}
+
+.my-card-image img {
+  width: 280px;
+  height: 280px;
+  margin: 5px;
+  border-radius: 0px 50px 0px 0px;
+}
+
+.my-card-body {
+  margin: 10px;
+  padding: 0%;
+}
+
+.my-card-body h3 {
+  text-align: center;
+  color: darkmagenta;
+}
+
+.my-card-body p {
+  text-align: center;
+}
+
+
+/* mobile devices */
+@media screen and (max-width: 600px) {
+  .my-card-container {
+    display: flex;
+    justify-content: center;
+
+  }
+}
+
+/* medium sized devices */
+@media screen and (max-width: 1024px) {
+  .my-card-container {
+    display: flex;
+    justify-content: center;
+
+  }
+}
+
+/* Details */
+.details-container {
+  padding: 30px;
+}
+
+.detail-header-image {
+  display: flex;
+  justify-content: center;
+}
+
+.detail-header-image img {
+  width: 50%;
+  height: auto;
+}
+
+.detail-body p {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .detail-header {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* partcipant */
+.part-container{
+  background-image: linear-gradient(to right, #64b9ebf7, #c753f5c4);
+}
+
+.my-part-card {
+  border: 1px solid green;
+  border-radius: 90px 0px 90px 0px;
+  width: 300px;
+  height: 580px;
+  padding: 5px;
+  margin: 5px;
+  background-color: #ffffff57;
+}
+
+.my-part-card-image img {
+  width: 280px;
+  height: 280px;
+  margin: 5px;
+  border-radius: 90px 0px 0px 0px;
+}
+
+
+.my-part-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: auto;
+
+}
+
+@media screen and (max-width: 600px) {
+  .my-part-card-container {
+    display: flex;
+    justify-content: center;
+  }
+}
+a{
+  display: none;
+  display: block;
 }
