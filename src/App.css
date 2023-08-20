@@ -199,6 +199,11 @@
   font-size: 30px;
 }
 
+.btn-container{
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (max-width: 600px) {
   .detail-header {
     display: flex;
@@ -242,8 +247,4 @@
     display: flex;
     justify-content: center;
   }
-}
-a{
-  display: none;
-  display: block;
 }

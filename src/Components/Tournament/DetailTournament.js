@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import Table from 'react-bootstrap/Table';
-import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { URL } from '../../backend link';
 import Loading from '../Loading';
 import Navbartop from '../NavBar.js/navbar';
@@ -25,7 +25,9 @@ function DetailTournament() {
     useEffect(() => {
         details()
     }, []);
-
+    function popmessage() {
+        alert('data emty');
+    }
     return (
         <Navbartop>
             <div>
@@ -91,11 +93,21 @@ function DetailTournament() {
                                 </div> : ""
                             }
                         </div>
-                        <div>
-                            {participantdisplay === 'none' ? <Button variant="primary" onClick={() => { setParticipantdisplay("block") }} size="lg">Show participant</Button> : <Button variant="primary" onClick={() => { setParticipantdisplay("none") }} size="lg">Hidden participant</Button>}
-                            {winnerdisplay === 'none' ? <Button variant="primary" onClick={() => { setWinnerdisplay('block') }} size="lg">Show Winners</Button> : <Button variant="primary" onClick={() => { setWinnerdisplay('none') }} size="lg">Hidden Winners</Button>}
-                            <Button variant="primary" onClick={() => history.push('/')} size="lg">Back</Button>
+                        <div className='btn-container'>
+                            {selecteddata.participant.length !== 0 ? <div>
+                                {participantdisplay === 'none' ? <Button variant="primary" onClick={() => { setParticipantdisplay("block") }} size="sm">Show participant</Button> :
+                                    <Button variant="primary" onClick={() => { setParticipantdisplay("none") }} size="sm">Hidden participant</Button>}
+                            </div> :
+                                <Button variant="primary" onClick={() => popmessage()} size="sm">Show participant</Button>}
+
+                            {selecteddata.winners.length !== 0 ? <div>
+                                {winnerdisplay === 'none' ? <Button variant="primary" onClick={() => { setWinnerdisplay('block') }} size="sm">Show Winners</Button> :
+                                    <Button variant="primary" onClick={() => { setWinnerdisplay('none') }} size="sm">Hidden Winners</Button>}
+                            </div> :
+                                <Button variant="primary" onClick={() => popmessage()} size="sm">Show Winners</Button>}
+                            <Button variant="primary" onClick={() => history.push('/')} size="sm">Back</Button>
                         </div>
+
                     </div>
                 }
 

@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { URL } from '../../backend link';
 import Loading from '../Loading';
 import Navbartop from '../NavBar.js/navbar';
-import { NavLink } from 'react-bootstrap';
+
 
 function TournamentList() {
     const [tournamentdata, setTournamentdata] = useState([]);
@@ -28,7 +28,7 @@ function TournamentList() {
         getdata();
     }, [])
     //delete data
-    async function deletedata({ id }) {
+    async function deletedata(id) {
         try {
             let response = await axios.delete(`${URL}/tournament/delete/${id}`);
             console.log(response.data.message)
@@ -52,7 +52,7 @@ function TournamentList() {
                         <div class="order-container">
                             <div class="my-card-container">
                                 {tournamentdata.map((list, index) => (
-                                    <div className="my-card" type='button' onClick={()=>{history.push(`/detail/${list._id}`)}}>
+                                    <div className="my-card" >
                                             <div className="my-card-header">
                                                 <div className="my-card-image">
                                                     <img src={list.image}></img>
