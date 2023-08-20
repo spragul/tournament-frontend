@@ -26,7 +26,7 @@ function DetailTournament() {
         details()
     }, []);
     function popmessage() {
-        alert('data emty');
+        alert('Empty Data');
     }
     return (
         <Navbartop>
