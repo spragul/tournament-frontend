@@ -46,7 +46,7 @@ function DetailTournament() {
                                 </div>
                             </div>
                             <div className='detail-body'>
-                                <p><span>Description:</span>{selecteddata.description}</p>
+                                <p><span></span>{selecteddata.description}</p>
                                 <p><span>Starting date:</span>{selecteddata.startingdate.slice(0, 10)}</p>
                                 <p><span>Ending date:</span>{selecteddata.endingdate.slice(0, 10)}</p>
                             </div>

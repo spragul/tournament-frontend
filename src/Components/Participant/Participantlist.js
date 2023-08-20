@@ -58,7 +58,7 @@ function ParticipantList() {
                                         </div>
                                         <div className="my-card-body">
                                             <h3>{list.gamename}</h3>
-                                            <p><span className='my_span'>:Name </span>{list.name}</p>
+                                            <p><span className='my_span'>Name: </span>{list.name}</p>
                                             <p><span className='my_span'>Email:</span>{list.email}</p>
                                             <p><span className='my_span'>Mobile:</span>{list.mobile}</p>
                                             <p><span className='my_span'>DOB:</span>{list.dob.slice(0, 10)}</p>

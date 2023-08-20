@@ -56,6 +56,7 @@ function Addwinner() {
                             <div className="col-lg-12">
                                 <div >
                                     <select value={prize} onChange={e => setPrize(e.target.value)}className='dropdown-select' >
+                                    <option>Select prize</option>
                                         <option>First prize</option>
                                         <option>Second prize</option>
                                         <option>Third prize</option>
@@ -67,6 +68,7 @@ function Addwinner() {
                             {tournament.length !== 0 ? <div className="col-lg-12">
                                 <div className="form-group">
                                     <select value={name} className='dropdown-select' onChange={(e) => setName(e.target.value)}>
+                                        <option>Select Name</option>
                                         {tournament.participant.map((list,index) => (
                                             <option key={index}>{list}</option>
                                         ))}

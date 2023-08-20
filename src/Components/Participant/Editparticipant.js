@@ -5,6 +5,7 @@ import { URL } from '../../backend link';
 import { toast } from 'react-toastify';
 
 function Editparticipant() {
+    const [ttournament, setTtournamentdata] = useState('');
     const [tournament, setTournament] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -19,7 +20,7 @@ function Editparticipant() {
             const response = await axios.get(`${URL}/participant/${id}`);
             console.log(response.data.personData);
             let data = response.data.personData;
-            let sdate1=data.dob.split('T');
+            let sdate1 = data.dob.split('T');
             if (data) {
                 setName(data.name);
                 setEmail(data.email);
@@ -33,9 +34,20 @@ function Editparticipant() {
             console.error(error);
         }
     }
+    async function tgetdata() {
+        try {
+            const response = await axios.get(`${URL}/tournament`);
+            console.log(response.data.Data);
+            setTtournamentdata(response.data.Data)
+        } catch (error) {
+            console.error(error);
+        }
+    }
     useEffect(() => {
         getdata();
-    }, [])
+        tgetdata();
+    }, []);
+
 
     async function edditpart(participantobj) {
         let response = await axios.put(`${URL}/participant/update/${id}`, participantobj);
@@ -46,7 +58,7 @@ function Editparticipant() {
     }
     const handlesubmit = (e) => {
         e.preventDefault();
-        const participantobj = { name, email, image, mobile, dob,tournament };
+        const participantobj = { name, email, image, mobile, dob, tournament };
         console.log(participantobj);
         edditpart(participantobj)
     }
@@ -89,12 +101,16 @@ function Editparticipant() {
                                     <input type='Date' value={dob} onChange={e => setdob(e.target.value)} className="form-control"></input>
                                 </div>
                             </div>
-                            <div className="col-lg-12">
+                            {ttournament.length !== 0 ? <div className="col-lg-12">
                                 <div className="form-group">
-                                    <label>Tournament Name</label>
-                                    <input type='text' value={tournament} onChange={e => setTournament(e.target.value)} className="form-control"></input>
+                                    <select value={tournament} className='dropdown-select' onChange={(e) => setTournament(e.target.value)}>
+                                        <option>Select tournament</option>
+                                        {ttournament.map((list, index) => (
+                                            <option key={index}>{list.gamename}</option>
+                                        ))}
+                                    </select>
                                 </div>
-                            </div>
+                            </div> : <div></div>}
 
                         </div>
                     </div>
