@@ -53,9 +53,10 @@ function TournamentList() {
                             <div class="my-card-container">
                                 {tournamentdata.map((list, index) => (
                                     <div className="my-card" >
+                                        <div type='button' onClick={() => { history.push(`/detail/${list._id}`) }}>
                                             <div className="my-card-header">
                                                 <div className="my-card-image">
-                                                    <img src={list.image}></img>
+                                                    <img src={list.image} alt={list.gamename}></img>
                                                 </div>
                                             </div>
                                             <div className="my-card-body">
@@ -64,12 +65,14 @@ function TournamentList() {
                                                 <p><span className='my_span'>Mobile:</span>{list.mobile}</p>
                                                 <p><span className='my_span'>Starting Date:</span>{list.startingdate.slice(0, 10)}</p>
                                                 <p><span className='my_span'>Ending Date:</span>{list.endingdate.slice(0, 10)}</p>
-                                                <div className='delete-button'>
-                                                    <Button onClick={() => { history.push(`/detail/${list._id}`) }} variant="primary" >details</Button>
-                                                    <Button onClick={() => deletedata(list._id)} variant="danger" ><span className='delete-btn'><MdDelete /></span></Button>
-                                                    <Button onClick={() => { history.push(`/edit/tournament/${list._id}`) }} variant="warning" ><span className='edit-btn'><FaEdit /></span></Button>
-                                                </div>
                                             </div>
+                                        </div>
+                                        <div className='delete-button'>
+                                            <Button onClick={() => { history.push(`/detail/${list._id}`) }} variant="primary" >details</Button>
+                                            <Button onClick={() => deletedata(list._id)} variant="danger" ><span className='delete-btn'><MdDelete /></span></Button>
+                                            <Button onClick={() => { history.push(`/edit/tournament/${list._id}`) }} variant="warning" ><span className='edit-btn'><FaEdit /></span></Button>
+                                        </div>
+
                                     </div>
                                 ))
                                 }
