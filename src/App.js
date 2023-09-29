@@ -19,8 +19,7 @@ import { NM } from './Components/m';
 
 
 function App() {
- let token=sessionStorage.getItem('token');
-console.log(token);
+
   return (
     <div className="App">
       <Switch>
