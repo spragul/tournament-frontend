@@ -15,9 +15,10 @@ function DetailTournament() {
     let { id } = useParams();
     const [selecteddata, setSelecteddata] = useState('');
     const history = useHistory();
+    const token=sessionStorage.getItem('token');
     //fetching single data
     async function details() {
-        const response = await axios.get(`${URL}/tournament/${id}`);
+        const response = await axios.get(`${URL}/tournament/${id}`,{ headers: {"Authorization" : `Bearer ${token}`}});
         console.log(response.data.Data);
         setSelecteddata(response.data.Data)
     }
@@ -105,7 +106,7 @@ function DetailTournament() {
                                     <Button variant="primary" onClick={() => { setWinnerdisplay('none') }} size="sm">Hidden Winners</Button>}
                             </div> :
                                 <Button variant="primary" onClick={() => popmessage()} size="sm">Show Winners</Button>}
-                            <Button variant="primary" onClick={() => history.push('/')} size="sm">Back</Button>
+                            <Button variant="primary" onClick={() => history.push('/dashboard')} size="sm">Back</Button>
                         </div>
 
                     </div>

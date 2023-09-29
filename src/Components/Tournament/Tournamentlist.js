@@ -13,11 +13,11 @@ import Navbartop from '../NavBar.js/navbar';
 function TournamentList() {
     const [tournamentdata, setTournamentdata] = useState([]);
     const history = useHistory();
-
+   const token=sessionStorage.getItem('token')
     //geting data
     async function getdata() {
         try {
-            const response = await axios.get(`${URL}/tournament`);
+            const response = await axios.get(`${URL}/tournament`,{ headers: {"Authorization" : `Bearer ${token}`}});
             console.log(response.data.Data);
             setTournamentdata(response.data.Data)
         } catch (error) {
@@ -30,7 +30,7 @@ function TournamentList() {
     //delete data
     async function deletedata(id) {
         try {
-            let response = await axios.delete(`${URL}/tournament/delete/${id}`);
+            let response = await axios.delete(`${URL}/tournament/delete/${id}`,{ headers: {"Authorization" : `Bearer ${token}`}});
             console.log(response.data.message)
             toast(response.data.message);
             if (response.data.rd === true) {

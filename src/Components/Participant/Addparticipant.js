@@ -13,11 +13,19 @@ function Addparticipant() {
   const [dob, setdob] = useState('');
  const {id}=useParams();
  const history=useHistory();
+ const token=sessionStorage.getItem('token');
+ //add data
   async function addparticipant(participantobj){
-    let response = await axios.post(`${URL}/participant/adddata/${id}`,participantobj);
-    toast(response.data.message);
-    if(response.data.rd===true){
-      history.push('/participant')
+    try {
+      let response = await axios.post(`${URL}/participant/adddata/${id}`,participantobj,{ headers: {"Authorization" : `Bearer ${token}`}});
+      toast(response.data.message);
+      if(response.data.rd===true){
+        history.push('/participant')
+      }
+      
+    } catch (error) {
+      console.log(error);
+      toast.error(`Error ${error}`);
     }
   }
 
@@ -72,7 +80,7 @@ function Addparticipant() {
           </div>
           <div className="card-footer" style={{ textAlign: 'left' }}>
             <button className="btn btn-primary" type="submit">Submit</button> |
-            <Link className="btn btn-danger" to={'/'}>Back</Link>
+            <Link className="btn btn-danger" to={'/dashboard'}>Back</Link>
           </div>
 
         </div>

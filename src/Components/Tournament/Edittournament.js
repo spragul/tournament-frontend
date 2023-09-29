@@ -14,19 +14,20 @@ function Edittournament() {
     const [endingdate, setEndingdate] = useState('');
     const history=useHistory();
     const {id}=useParams();
+    const token=sessionStorage.getItem('token')
     //Add a data
     async function updatedata(tournamentobject) {
-        let response = await axios.put(`${URL}/tournament/update/${id}`, tournamentobject);
+        let response = await axios.put(`${URL}/tournament/update/${id}`, tournamentobject,{ headers: {"Authorization" : `Bearer ${token}`}});
         toast(response.data.message);
         console.log(response)
         if(response.data.rd===true){
-            history.push('/');
+            history.push('/dashboard');
         }
     }
     //geting data
     async function getdata() {
         try {
-            const response = await axios.get(`${URL}/tournament/${id}`);
+            const response = await axios.get(`${URL}/tournament/${id}`,{ headers: {"Authorization" : `Bearer ${token}`}});
             console.log(response.data.Data);
             let data=response.data.Data;
             let sdate1=data.startingdate.split('T');
@@ -43,6 +44,7 @@ function Edittournament() {
             }
         } catch (error) {
             console.error(error);
+            toast.error(`Error${error}`);
         }
     }
     useEffect(() => {
@@ -111,7 +113,7 @@ function Edittournament() {
                     </div>
                     <div className="card-footer" style={{ textAlign: 'left' }}>
                         <button className="btn btn-primary" type="submit">Submit</button> |
-                        <Link className="btn btn-danger" to={'/'}>Back</Link>
+                        <Link className="btn btn-danger" to={'/dashboard'}>Back</Link>
                     </div>
 
                 </div>

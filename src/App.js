@@ -10,15 +10,25 @@ import TournamentList from './Components/Tournament/Tournamentlist';
 import DetailTournament from './Components/Tournament/DetailTournament';
 import Addwinner from './Components/Tournament/Addwinner';
 import ColorSchemesExample from './Components/NavBar.js/navbar';
+import { Login } from './Components/pages/login';
+import { Signup } from './Components/pages/signuppage';
+import { Forgot } from './Components/pages/forgotpass';
+import { Resetpassword } from './Components/pages/resetpassword';
+import { NM } from './Components/m';
 
 
 
 function App() {
+ let token=sessionStorage.getItem('token');
+console.log(token);
   return (
     <div className="App">
       <Switch>
         <Route exact path='/'>
-        <TournamentList/>
+         <NM/>
+        </Route>
+        <Route exact path='/dashboard'>
+         <TournamentList/>
         </Route>
         <Route path='/navbar'>
           <ColorSchemesExample/>
@@ -43,6 +53,18 @@ function App() {
         </Route>
         <Route path='/winner/add/:id'>
           <Addwinner />
+        </Route>
+        <Route path='/login'>
+          <Login/>
+        </Route>
+        <Route path='/signup'>
+          <Signup/>
+        </Route>
+        <Route path='/forgotpassword'>
+          <Forgot/>
+        </Route>
+        <Route path='/resetpassword/:id/:token'>
+          <Resetpassword/>
         </Route>
       </Switch>
 

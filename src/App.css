@@ -248,3 +248,74 @@
     justify-content: center;
   }
 }
+
+/* login */
+#loginpageImage{
+  background-image: linear-gradient(to right, #eb64e694, #5367f5c4);
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+/*  */
+
+/* signup */
+#signpageImage{
+  background-image: linear-gradient(to right, #64eb9bd1, #7bf553c4);
+  background-color: #cccccc;
+  height: 120vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+/* forgot */
+#forgotpageImage{
+  background-image: linear-gradient(to right, #eb64e694, #5367f5c4);
+  background-color: #cccccc;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+/* resetpassword */
+#resetpageImage{
+  background-image: linear-gradient(to right, #eb64e694, #5367f5c4);
+  background-color: #cccccc;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+#nav-btn-clr{
+  background-color: aqua;
+  color: black;
+}
+#nav-btn-clr:hover{
+  background-color: blueviolet;
+  color: #cccccc;
+}
+
+.nav-btn-Participant:hover{
+background-color: #61dafb;
+color: black;
+}
+
+.nav-btn-Tournament:hover{
+  background-color: blue;
+  color:white
+}
+
+.nav-btn-Add:hover{
+  background-color: cadetblue;
+  color: black;
+}
+
+.nav-btn-out:hover{
+  background-color: chocolate;
+  color:black;
+  
+}

@@ -10,10 +10,11 @@ function Addwinner() {
     const [prize, setPrize] = useState('');
     const { id } = useParams();
     const history=useHistory();
+    const token=sessionStorage.getItem('token');
     //geting data
     async function getdata() {
         try {
-            const response = await axios.get(`${URL}/tournament/${id}`);
+            const response = await axios.get(`${URL}/tournament/${id}`,{ headers: {"Authorization" : `Bearer ${token}`}});
             console.log(response.data.Data);
             setTournamentdata(response.data.Data)
         } catch (error) {
@@ -28,7 +29,7 @@ function Addwinner() {
         let response = await axios.patch(`${URL}/tournament/winner/${id}`,winnerobject);
         toast(response.data.message);
         if(response.data.rd===true){
-          history.push('/')
+          history.push('/dashboard')
         }
       }
     const handlesubmit = (e) => {
@@ -80,7 +81,7 @@ function Addwinner() {
                     </div>
                     <div className="card-footer" style={{ textAlign: 'left' }}>
                         <button className="btn btn-primary" type="submit">Submit</button> |
-                        <Link className="btn btn-danger" to={'/'}>Back</Link>
+                        <Link className="btn btn-danger" to={'/dashboard'}>Back</Link>
                     </div>
 
                 </div>

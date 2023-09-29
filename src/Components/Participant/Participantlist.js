@@ -13,9 +13,10 @@ import Navbartop from '../NavBar.js/navbar';
 function ParticipantList() {
     const [participantdata, setParticipant] = useState([]);
     const history = useHistory();
+    const token=sessionStorage.getItem('token');
     async function getdata() {
         try {
-            const response = await axios.get(`${URL}/participant`);
+            const response = await axios.get(`${URL}/participant`,{ headers: {"Authorization" : `Bearer ${token}`}});
             console.log(response.data.personData);
             toast(response.data.message);
             setParticipant(response.data.personData)

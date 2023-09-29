@@ -7,6 +7,11 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 function Navbartop({ children }) {
     const history = useHistory()
+    //logout
+    function logout(){
+        sessionStorage.clear();
+        history.push('/login');
+    }
     return (
         <div>
             <Navbar expand="lg" className="bg-success">
@@ -19,10 +24,11 @@ function Navbartop({ children }) {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Button variant="outline-warning" onClick={() => { history.push('/participant') }}>Participant List</Button>
-                            <Button variant="outline-warning" onClick={() => { history.push('/') }}>Tournament List</Button>
-                            <Button variant="outline-warning" onClick={() => { history.push('/add/tournament') }}>Add Tournament</Button>
+                            <Button variant="outline-warning" className='nav-btn-Participant' onClick={() => { history.push('/participant') }}>Participant List</Button>
+                            <Button variant="outline-warning" className='nav-btn-Tournament' onClick={() => { history.push('/dashboard') }}>Tournament List</Button>
+                            <Button variant="outline-warning" className='nav-btn-Add' onClick={() => { history.push('/add/tournament') }}>Add Tournament</Button>
                         </Nav>
+                        <Nav> <Button variant="outline-warning" className='nav-btn-out' onClick={() =>logout() }>Logout</Button></Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

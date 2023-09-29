@@ -14,10 +14,11 @@ function Editparticipant() {
     const [dob, setdob] = useState('');
     const { id } = useParams();
     const history = useHistory();
+    const token=sessionStorage.getItem('token');
     //get selected data
     async function getdata() {
         try {
-            const response = await axios.get(`${URL}/participant/${id}`);
+            const response = await axios.get(`${URL}/participant/${id}`,{ headers: {"Authorization" : `Bearer ${token}`}});
             console.log(response.data.personData);
             let data = response.data.personData;
             let sdate1 = data.dob.split('T');
@@ -36,7 +37,7 @@ function Editparticipant() {
     }
     async function tgetdata() {
         try {
-            const response = await axios.get(`${URL}/tournament`);
+            const response = await axios.get(`${URL}/tournament`,{ headers: {"Authorization" : `Bearer ${token}`}});
             console.log(response.data.Data);
             setTtournamentdata(response.data.Data)
         } catch (error) {
@@ -50,7 +51,7 @@ function Editparticipant() {
 
 
     async function edditpart(participantobj) {
-        let response = await axios.put(`${URL}/participant/update/${id}`, participantobj);
+        let response = await axios.put(`${URL}/participant/update/${id}`, participantobj,{ headers: {"Authorization" : `Bearer ${token}`}});
         toast(response.data.message);
         if (response.data.rd === true) {
             history.push('/participant')
@@ -116,7 +117,7 @@ function Editparticipant() {
                     </div>
                     <div className="card-footer" style={{ textAlign: 'left' }}>
                         <button className="btn btn-primary" type="submit">Submit</button> |
-                        <Link className="btn btn-danger" to={'/'}>Back</Link>
+                        <Link className="btn btn-danger" to={'/participant'}>Back</Link>
                     </div>
 
                 </div>

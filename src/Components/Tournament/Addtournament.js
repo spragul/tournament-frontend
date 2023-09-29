@@ -14,13 +14,20 @@ function Addtournament() {
     const [startingdate, setStartingdate] = useState('');
     const [endingdate, setEndingdate] = useState('');
     const history=useHistory();
+    const token=sessionStorage.getItem('token');
     //Add a data
     async function adddata(tournamentobject) {
-        let response = await axios.post(`${URL}/tournament/adddata`, tournamentobject);
+        console.log(tournamentobject);
+       try {
+        let response = await axios.post(`${URL}/tournament/adddata`,tournamentobject,{ headers: {"Authorization" : `Bearer ${token}`}});
         toast(response.data.message);
         if(response.data.rd===true){
-            history.push('/');
+            history.push('/dashboard');
         }
+       } catch (error) {
+        console.log(error);
+        toast.error(`Error ${error}`);
+       }
     }
 
 
@@ -86,7 +93,7 @@ function Addtournament() {
                     </div>
                     <div className="card-footer" style={{ textAlign: 'left' }}>
                         <button className="btn btn-primary" type="submit">Submit</button> |
-                        <Link className="btn btn-danger" to={'/'}>Back</Link>
+                        <Link className="btn btn-danger" to={'/dashboard'}>Back</Link>
                     </div>
 
                 </div>
