@@ -26,7 +26,7 @@ function Addwinner() {
     }, []);
 
     async function addwinner(winnerobject){
-        let response = await axios.patch(`${URL}/tournament/winner/${id}`,winnerobject);
+        let response = await axios.patch(`${URL}/tournament/winner/${id}`,winnerobject,{ headers: {"Authorization" : `Bearer ${token}`}});
         toast(response.data.message);
         if(response.data.rd===true){
           history.push('/dashboard')
